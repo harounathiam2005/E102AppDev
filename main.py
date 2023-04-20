@@ -1,9 +1,22 @@
 import mysql.connector
 
-def insert(connection, user, password, email, table):
-    print("debug", user , password , email)
+def insert_row(connection, user, password, email, table):
     cursor = connection.cursor()
     cursor.execute(f'INSERT INTO {table} (username, password_hash, email) VALUES ("{user}", "hashed_{password}", "{email}");')
+    connection.commit()
+    cursor.close()
+
+def remove_row(connection, id, table):
+    print("debug", id, table)
+    cursor = connection.cursor()
+    cursor.execute(f'DELETE FROM {table} WHERE id{table} = {id};')
+    connection.commit()
+    cursor.close()
+
+def clear_table(connection, table):
+    print("debug", id, table)
+    cursor = connection.cursor()
+    cursor.execute(f'DELETE FROM {table};')
     connection.commit()
     cursor.close()
 
@@ -17,7 +30,7 @@ def dump_table(connection):
 connection = mysql.connector.connect(user = 'root', database = 'new_schema', password = 'Sonic46!!')
 table = 'accounts2'
 
-insert(connection, 'hthiam2', 'Sonic55', 'ht@gmail.com', table)
+insert_row(connection, 'hthiam', 'Sonic46!!', 'hthiam252', table)
 dump_table(connection)
 
 connection.close()
