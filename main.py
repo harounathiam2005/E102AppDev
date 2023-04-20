@@ -2,9 +2,8 @@ import mysql.connector
 
 def insert(connection, user, password, email, table):
     print("debug", user , password , email)
-    testQuery = (f'INSERT INTO {table} (username, password_hash, email) VALUES ("{user}", "hashed_{password}", "{email}");')
     cursor = connection.cursor()
-    cursor.execute(testQuery)
+    cursor.execute(f'INSERT INTO {table} (username, password_hash, email) VALUES ("{user}", "hashed_{password}", "{email}");')
     connection.commit()
     cursor.close()
 
@@ -18,7 +17,7 @@ def dump_table(connection):
 connection = mysql.connector.connect(user = 'root', database = 'new_schema', password = 'Sonic46!!')
 table = 'accounts2'
 
-insert(connection, 'hthiam', 'Sonic55', 'ht@gmail.com', table)
+insert(connection, 'hthiam2', 'Sonic55', 'ht@gmail.com', table)
 dump_table(connection)
 
 connection.close()
