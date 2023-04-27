@@ -1,0 +1,13 @@
+Create table data mutation functions X
+Add new `balance` field in table X
+Create functionality to move balance to other accounts
+Create crude terminal UI
+- main function
+
+On sign in, id from table row will be provided as a key
+
+"""
+
+#insert_row(connection, 'hthiam', 'Sonic46!!', 'harounathiam2005@gmail.com', 0)
+#update(connection, 'balance', 2, 1)
+#dump_table(connection)
