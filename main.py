@@ -1,7 +1,4 @@
 from sqlfunc import *
-from menu import menu
-
-print(get_data(connection, 'balance', 1))
 
 user = input("Enter your username:")
 password = input("Enter your password:")
@@ -24,9 +21,7 @@ print(item)
 
 print("Welcome...")
 id = get_id(connection, password)
-print(id)
 
-print("")
 on = True
 while on:
     print("")
@@ -39,29 +34,59 @@ while on:
     print("(7) Transfer balance")
     print("(8) Quit")
     print("")
-    decision = input("Tell me, what would you like to do? ")
+    decision = input("What would you like to do? ")
     print("")
     if decision == "1":
-        balance = get_data(connection, 'balance', id)
-        print(balance)
+        print(get_data(connection, 'balance', id))
     elif decision == "2":
         increment_balance(connection, id)
     elif decision == "3":
-        pass
+        check = input("Enter your password: ")
+        while check_pass(connection, check) == False:
+            print("")
+            print("Password is incorrect. Please enter it again.")
+            password = input("Password: ")
+            print("")
+        new_user = input("What would you like to change your username to?")
+        print("")
+        update(connection, 'user', new_user, id)
+        print("Updated!")
     elif decision == "4":
-        pass
+        check = input("Enter your password: ")
+        while check_pass(connection, check) == False:
+            print("")
+            print("Password is incorrect. Please enter it again.")
+            password = input("Password: ")
+            print("")
+        new_pass = input("What would you like to change your password to?")
+        print("")
+        update(connection, 'pass', new_pass, id)
+        print("Updated!")
     elif decision == "5":
-        pass
+        user = input("Enter a new username: ")
+        print("")
+        password = input("Enter a new password: ")
+        print("")
+        email = input("Enter your email: ")
+        print("")
+        insert_row(connection, user, password, email)
+        print("Account created!")
     elif decision == "6":
-        pass
+        while check_user_and_pass(connection, user, password) == False:
+            print("")
+            print("Username or password is incorrect. Please enter them again.")
+            user = input("Username: ")
+            password = input("Password: ")
+            print("")
+        id = get_id(connection, password)
+        print("")
+        print("Current user: ", get_data(connection, 'user', id))
     elif decision == "7":
         pass
     elif decision == "8":
         print("Closing...")
-        print("")
         break
     else:
         print("Please choose from the displayed options. ")
-        print("")
 
 connection.close()
