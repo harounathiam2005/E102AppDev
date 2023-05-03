@@ -31,8 +31,7 @@ while on:
     print("(4) Change password")
     print("(5) Add account")
     print("(6) Switch account")
-    print("(7) Transfer balance")
-    print("(8) Quit")
+    print("(7) Quit")
     print("")
     decision = input("What would you like to do? ")
     print("")
@@ -82,8 +81,6 @@ while on:
         print("")
         print("Current user: ", get_data(connection, 'user', id))
     elif decision == "7":
-        pass
-    elif decision == "8":
         print("Closing...")
         break
     else:
